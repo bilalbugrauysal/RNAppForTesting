@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "detox-simple-rn-app",
+    "slug": "detox-simple-rn-app",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "detox-simple-rn-app"
+}
