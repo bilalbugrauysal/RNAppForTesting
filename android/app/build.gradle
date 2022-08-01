@@ -81,7 +81,7 @@ import org.apache.tools.ant.taskdefs.condition.Os
 def projectRoot = rootDir.getAbsoluteFile().getParentFile().getAbsolutePath()
 
 project.ext.react = [
-    entryFile: ["node", "-e", "require('expo/scripts/resolveAppEntry')", projectRoot, "android"].execute(null, rootDir).text.trim(),
+    entryFile: ["node", "-e", projectRoot, "android"].execute(null, rootDir).text.trim(),
     enableHermes: (findProperty('expo.jsEngine') ?: "jsc") == "hermes",
     cliPath: new File(["node", "--print", "require.resolve('react-native/package.json')"].execute(null, rootDir).text.trim()).getParentFile().getAbsolutePath() + "/cli.js",
     hermesCommand: new File(["node", "--print", "require.resolve('hermes-engine/package.json')"].execute(null, rootDir).text.trim()).getParentFile().getAbsolutePath() + "/%OS-BIN%/hermesc",
@@ -298,30 +298,7 @@ dependencies {
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
-    def isGifEnabled = (findProperty('expo.gif.enabled') ?: "") == "true";
-    def isWebpEnabled = (findProperty('expo.webp.enabled') ?: "") == "true";
-    def isWebpAnimatedEnabled = (findProperty('expo.webp.animated') ?: "") == "true";
     def frescoVersion = rootProject.ext.frescoVersion
-
-    // If your app supports Android versions before Ice Cream Sandwich (API level 14)
-    if (isGifEnabled || isWebpEnabled) {
-        implementation "com.facebook.fresco:fresco:${frescoVersion}"
-        implementation "com.facebook.fresco:imagepipeline-okhttp3:${frescoVersion}"
-    }
-
-    if (isGifEnabled) {
-        // For animated gif support
-        implementation "com.facebook.fresco:animated-gif:${frescoVersion}"
-    }
-
-    if (isWebpEnabled) {
-        // For webp support
-        implementation "com.facebook.fresco:webpsupport:${frescoVersion}"
-        if (isWebpAnimatedEnabled) {
-            // Animated webp support
-            implementation "com.facebook.fresco:animated-webp:${frescoVersion}"
-        }
-    }
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
