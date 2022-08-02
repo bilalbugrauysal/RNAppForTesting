@@ -2,7 +2,7 @@
 	"maxWorkers": 1,
 	"testEnvironment": "./environment",
 	"testRunner": "jest-circus/runner",
-	"testTimeout": 20000,
+	"testTimeout": 40000,
 	"testRegex": "\\.e2e\\.js$",
 	"reporters": ["detox/runners/jest/streamlineReporter", "@jest/reporters/build/SummaryReporter"],
 	"verbose": true
