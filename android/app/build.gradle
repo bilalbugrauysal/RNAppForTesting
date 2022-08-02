@@ -81,7 +81,8 @@ import org.apache.tools.ant.taskdefs.condition.Os
 def projectRoot = rootDir.getAbsoluteFile().getParentFile().getAbsolutePath()
 
 project.ext.react = [
-    entryFile: ["node", "-e", projectRoot, "android"].execute(null, rootDir).text.trim(),
+    entryFile: "index.js",
+    bundleInRelease: true,
     enableHermes: (findProperty('expo.jsEngine') ?: "jsc") == "hermes",
     cliPath: new File(["node", "--print", "require.resolve('react-native/package.json')"].execute(null, rootDir).text.trim()).getParentFile().getAbsolutePath() + "/cli.js",
     hermesCommand: new File(["node", "--print", "require.resolve('hermes-engine/package.json')"].execute(null, rootDir).text.trim()).getParentFile().getAbsolutePath() + "/%OS-BIN%/hermesc",
@@ -233,7 +234,7 @@ android {
         }
     }
     signingConfigs {
-        debug {
+        main {
             storeFile file('debug.keystore')
             storePassword 'android'
             keyAlias 'androiddebugkey'
@@ -243,14 +244,13 @@ android {
     buildTypes {
         debug {
             minifyEnabled false
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.main
         }
         release {
             minifyEnabled false
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
-            minifyEnabled enableProguardInReleaseBuilds
+            signingConfig signingConfigs.main
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
             proguardFile "${rootProject.projectDir}/../node_modules/detox/android/detox/proguard-rules-app.pro"
         }

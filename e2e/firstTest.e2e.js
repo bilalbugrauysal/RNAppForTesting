@@ -12,22 +12,20 @@ const sleep = (timeout) => {
 		}, timeout);
 	});
 };
+const { device, element, expect, by } = require('detox');
 
 describe('Example', () => {
-	beforeAll(async () => {
-		await device.launchApp();
-	});
-
-	beforeEach(async () => {
-		await device.reloadReactNative();
-	});
-
 	it('should have welcome screen', async () => {
+		await device.launchApp();
+		console.log('App is ready');
 		const introduction = element(by.id(testIDs.Introduction));
+
+		console.log('Check Introduction');
 		await expect(introduction).toBeVisible();
 		await expect(introduction).toHaveText('Open up App.js to start working on your app!');
 
 		const myPrice = element(by.id(testIDs.MyPrice).withAncestor(by.id(testIDs.App)));
+		console.log('Check price');
 		await expect(myPrice).toBeVisible();
 		await expect(myPrice).toHaveText('5,80 €');
 
@@ -36,7 +34,10 @@ describe('Example', () => {
 		console.log('Wait done');
 
 		const myPercentage = element(by.id(testIDs.MyPercentage).withAncestor(by.id(testIDs.App)));
+		console.log('Check percentage');
 		await expect(myPercentage).toBeVisible();
 		await expect(myPercentage).toHaveText('-30%');
+
+		console.log('Test Done');
 	});
 });

@@ -2,6 +2,21 @@
 	"testRunner": "jest",
 	"runnerConfig": "e2e/config.json",
 	"skipLegacyWorkersInjection": true,
+	"artifacts": {
+		"rootDir": "e2e/artifacts",
+		"plugins": {
+			"instruments": { "enabled": true },
+			"log": "failing",
+			"uiHierarchy": "enabled",
+			"video": {
+				"enabled": true,
+				"keepOnlyFailedTestsArtifacts": true,
+				"simulator": {
+					"codec": "hevc"
+				}
+			}
+		}
+	},
 	"apps": {
 		"ios": {
 			"type": "ios.app",
@@ -35,6 +50,16 @@
 		"android": {
 			"device": "emulator",
 			"app": "android"
+		}
+	},
+	"behavior": {
+		"init": {
+			"reinstallApp": true,
+			"exposeGlobals": false
+		},
+		"launchApp": "auto",
+		"cleanup": {
+			"shutdownDevice": false
 		}
 	}
 }
