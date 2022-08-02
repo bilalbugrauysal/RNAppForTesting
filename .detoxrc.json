@@ -6,7 +6,7 @@
 		"rootDir": "e2e/artifacts",
 		"plugins": {
 			"instruments": { "enabled": true },
-			"log": "failing",
+			"log": "all",
 			"uiHierarchy": "enabled",
 			"video": {
 				"enabled": true,

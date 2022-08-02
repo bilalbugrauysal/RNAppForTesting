@@ -1,0 +1,925 @@
+Aug 2 16:05:56 detox[34244] TRACE: [DETOX_CREATE] created a Detox instance with config:
+{
+  appsConfig: {
+    default: {
+      type: 'android.apk',
+      binaryPath: 'android/app/build/outputs/apk/release/app-release.apk',
+      build: 'cd android && ./gradlew assembleRelease assembleAndroidTest -DtestBuildType=release && cd ..'
+    }
+  },
+  artifactsConfig: {
+    rootDir: 'e2e/artifacts/android.2022-08-02 13-05-55Z',
+    plugins: {
+      log: {
+        enabled: true,
+        keepOnlyFailedTestsArtifacts: false
+      },
+      screenshot: {
+        enabled: true,
+        shouldTakeAutomaticSnapshots: false,
+        keepOnlyFailedTestsArtifacts: false
+      },
+      video: {
+        enabled: true,
+        keepOnlyFailedTestsArtifacts: true,
+        simulator: {
+          codec: 'hevc'
+        }
+      },
+      instruments: {
+        enabled: true,
+        keepOnlyFailedTestsArtifacts: false
+      },
+      timeline: {
+        enabled: false
+      },
+      uiHierarchy: {
+        enabled: true,
+        keepOnlyFailedTestsArtifacts: false
+      }
+    },
+    pathBuilder: ArtifactPathBuilder {
+      _rootDir: 'e2e/artifacts/android.2022-08-02 13-05-55Z'
+    }
+  },
+  behaviorConfig: {
+    init: {
+      reinstallApp: true,
+      exposeGlobals: false
+    },
+    cleanup: {
+      shutdownDevice: false
+    },
+    launchApp: 'auto'
+  },
+  cliConfig: {
+    configuration: 'android',
+    loglevel: 'trace',
+    useCustomLogger: true
+  },
+  configurationName: 'android',
+  deviceConfig: {
+    type: 'android.emulator',
+    device: {
+      avdName: 'pixel_9.0'
+    }
+  },
+  runnerConfig: {
+    testRunner: 'jest',
+    runnerConfig: 'e2e/config.json',
+    specs: 'e2e',
+    skipLegacyWorkersInjection: true
+  },
+  sessionConfig: {
+    autoStart: true,
+    sessionId: 'fff44881-01de-007b-3392-0a95bb5c4e1d',
+    debugSynchronization: 10000
+  }
+}
+Aug 2 16:05:56 detox[34244] DEBUG: [WSS_CREATE] Detox server listening on localhost:55850...
+Aug 2 16:05:56 detox[34244] DEBUG: [WSS_CONNECTION, #55851] registered a new connection.
+Aug 2 16:05:56 detox[34244] TRACE: [WS_OPEN] opened web socket to: ws://localhost:55850
+Aug 2 16:05:56 detox[34244] TRACE: [WS_SEND] {"type":"login","params":{"sessionId":"fff44881-01de-007b-3392-0a95bb5c4e1d","role":"tester"},"messageId":0}
+Aug 2 16:05:56 detox[34244] TRACE: [WSS_GET_FROM, #55851] {"type":"login","params":{"sessionId":"fff44881-01de-007b-3392-0a95bb5c4e1d","role":"tester"},"messageId":0}
+Aug 2 16:05:56 detox[34244] TRACE: [SESSION_CREATED] created session fff44881-01de-007b-3392-0a95bb5c4e1d
+Aug 2 16:05:56 detox[34244] TRACE: [WSS_SEND_TO, #tester] {"type":"loginSuccess","params":{"testerConnected":true,"appConnected":false},"messageId":0}
+Aug 2 16:05:56 detox[34244] TRACE: [SESSION_JOINED] tester joined session fff44881-01de-007b-3392-0a95bb5c4e1d
+Aug 2 16:05:56 detox[34244] TRACE: [WS_MESSAGE] {"type":"loginSuccess","params":{"testerConnected":true,"appConnected":false},"messageId":0}
+ 
+Aug 2 16:05:56 detox[34244] DEBUG: [EXEC_CMD, #0] "/Users/bugrauysal/Library/Android/sdk/emulator/emulator" -list-avds --verbose
+Aug 2 16:05:56 detox[34244] TRACE: [EXEC_SUCCESS, #0] Nexus10API29
+pixel_9.0
+
+Aug 2 16:05:56 detox[34244] DEBUG: [EXEC_CMD, #1] "/Users/bugrauysal/Library/Android/sdk/emulator/emulator" -version 
+Aug 2 16:05:56 detox[34244] TRACE: [EXEC_SUCCESS, #1] Android emulator version 31.2.8.0 (build_id 8143646) (CL:N/A)
+Copyright (C) 2006-2017 The Android Open Source Project and many others.
+This program is a derivative of the QEMU CPU emulator (www.qemu.org).
+
+  This software is licensed under the terms of the GNU General Public
+  License version 2, as published by the Free Software Foundation, and
+  may be copied, distributed, and modified under those terms.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+
+Aug 2 16:05:56 detox[34244] DEBUG: [EMU_BIN_VERSION_DETECT] Detected emulator binary version { major: 31, minor: 2, patch: 8, toString: [Function: toString] }
+Aug 2 16:05:56 detox[34244] DEBUG: [ALLOCATE_DEVICE] Trying to allocate a device based on "pixel_9.0"
+Aug 2 16:05:56 detox[34244] DEBUG: [EXEC_CMD, #2] "/Users/bugrauysal/Library/Android/sdk/platform-tools/adb"  devices
+Aug 2 16:05:56 detox[34244] DEBUG: [EXEC_SUCCESS, #2] List of devices attached
+
+
+Aug 2 16:05:56 detox[34244] DEBUG: [ALLOCATE_DEVICE] Settled on emulator-16610
+Aug 2 16:05:56 detox[34244] DEBUG: [SPAWN_CMD] /Users/bugrauysal/Library/Android/sdk/emulator/emulator -verbose -no-audio -no-boot-anim -port 16610 @pixel_9.0
+Aug 2 16:06:01 detox[34244] DEBUG: [SPAWN_SUCCESS] WARNING | cannot add library /Users/bugrauysal/Library/Android/sdk/emulator/qemu/darwin-x86_64/lib64/vulkan/libvulkan.dylib: failed
+VERBOSE | autoconfig: -skin 1080x1920
+VERBOSE | autoconfig: -skindir (null)
+VERBOSE | autoconfig: -kernel /Users/bugrauysal/Library/Android/sdk/system-images/android-28/google_apis/x86//kernel-ranchu-64
+VERBOSE | Target arch = 'x86'
+VERBOSE | Auto-config: -qemu -cpu qemu32
+VERBOSE | Auto-detect: Kernel image requires new device naming scheme.
+VERBOSE | Auto-detect: Kernel does not support YAFFS2 partitions.
+VERBOSE | autoconfig: -ramdisk /Users/bugrauysal/Library/Android/sdk/system-images/android-28/google_apis/x86//ramdisk.img
+VERBOSE | Using initial system image: /Users/bugrauysal/Library/Android/sdk/system-images/android-28/google_apis/x86//system.img
+VERBOSE | Using initial vendor image: /Users/bugrauysal/Library/Android/sdk/system-images/android-28/google_apis/x86//vendor.img
+VERBOSE | autoconfig: -initdata /Users/bugrauysal/.android/avd/pixel_9.0.avd/userdata.img
+VERBOSE | autoconfig: -cache /Users/bugrauysal/.android/avd/pixel_9.0.avd/cache.img
+VERBOSE | Physical RAM size: 2048MB
+VERBOSE | VM heap size 0MB is below hardware specified minimum of 512MB,setting it to that value
+VERBOSE | System image is read only
+VERBOSE | Found 1 DNS servers:
+VERBOSE | 	192.168.3.1
+VERBOSE | found magic skin width=1080 height=1920 bpp=16
+
+VERBOSE | Requested console port 16610: Inferring adb port 16611.
+VERBOSE | Creating ext4 userdata partition: /Users/bugrauysal/.android/avd/pixel_9.0.avd/data
+Creating filesystem with parameters:
+    Size: 4294967296
+    Block size: 4096
+    Blocks per group: 32768
+    Inodes per group: 8192
+    Inode size: 256
+    Journal blocks: 16384
+    Label: 
+    Blocks: 1048576
+    Block groups: 32
+    Reserved block group size: 255
+Created filesystem with 25/262144 inodes and 34978/1048576 blocks
+VERBOSE | CPU Acceleration: working
+VERBOSE | CPU Acceleration status: Hypervisor.Framework OS X Version 12.5
+VERBOSE | handleCpuAcceleration: feature check for hvf
+VERBOSE | registered 'boot-properties' qemud service
+VERBOSE | Adding boot property: 'qemu.cmdline' = 'androidboot.logcat=*:V androidboot.consolepipe=qemu_pipe,pipe:logcat'
+VERBOSE | Adding boot property: 'qemu.logcat' = 'start'
+VERBOSE | GPU emulation enabled using 'host' mode
+VERBOSE | Initializing hardware OpenGLES emulation support
+VERBOSE | create display 0
+VERBOSE | setDisplayPose 0 x 0 y 0 w 1080 h 1920 dpi 0
+INFO    | configAndStartRenderer: setting vsync to 60 hz
+VERBOSE | Found 1 DNS servers:
+VERBOSE | 	192.168.3.1
+INFO    | Content of hardware configuration file:
+INFO    | added library /Users/bugrauysal/Library/Android/sdk/emulator/lib64/vulkan/libvulkan.dylib
+INFO    | 	hw.cpu.arch = x86
+INFO    | 	hw.cpu.model = qemu32
+INFO    | 	hw.cpu.ncore = 2
+INFO    | 	hw.ramSize = 2048
+INFO    | 	hw.screen = multi-touch
+INFO    | 	hw.mainKeys = false
+INFO    | 	hw.trackBall = false
+INFO    | 	hw.keyboard = false
+INFO    | 	hw.keyboard.lid = false
+INFO    | 	hw.keyboard.charmap = qwerty2
+INFO    | 	hw.dPad = false
+INFO    | 	hw.rotaryInput = false
+INFO    | 	hw.gsmModem = true
+INFO    | 	hw.gps = true
+INFO    | 	hw.battery = true
+INFO    | 	hw.accelerometer = true
+INFO    | 	hw.gyroscope = true
+INFO    | 	hw.audioInput = true
+INFO    | 	hw.audioOutput = true
+INFO    | 	hw.sdCard = true
+INFO    | 	disk.cachePartition = true
+INFO    | 	disk.cachePartition.path = /Users/bugrauysal/.android/avd/pixel_9.0.avd/cache.img
+INFO    | 	disk.cachePartition.size = 66m
+INFO    | 	test.quitAfterBootTimeOut = -1
+INFO    | 	test.delayAdbTillBootComplete = 0
+INFO    | 	test.monitorAdb = 0
+INFO    | 	hw.lcd.width = 1080
+INFO    | 	hw.lcd.height = 1920
+INFO    | 	hw.lcd.depth = 16
+INFO    | 	hw.lcd.density = 420
+INFO    | 	hw.lcd.backlight = true
+INFO    | 	hw.lcd.vsync = 60
+INFO    | 	hw.gltransport = pipe
+INFO    | 	hw.gltransport.asg.writeBufferSize = 1048576
+INFO    | 	hw.gltransport.asg.writeStepSize = 4096
+INFO    | 	hw.gltransport.asg.dataRingSize = 32768
+INFO    | 	hw.gltransport.drawFlushInterval = 800
+INFO    | 	hw.displayRegion.0.1.xOffset = -1
+INFO    | 	hw.displayRegion.0.1.yOffset = -1
+INFO    | 	hw.displayRegion.0.1.width = 0
+INFO    | 	hw.displayRegion.0.1.height = 0
+INFO    | 	hw.displayRegion.0.2.xOffset = -1
+INFO    | 	hw.displayRegion.0.2.yOffset = -1
+INFO    | 	hw.displayRegion.0.2.width = 0
+INFO    | 	hw.displayRegion.0.2.height = 0
+INFO    | 	hw.displayRegion.0.3.xOffset = -1
+INFO    | 	hw.displayRegion.0.3.yOffset = -1
+INFO    | 	hw.displayRegion.0.3.width = 0
+INFO    | 	hw.displayRegion.0.3.height = 0
+INFO    | 	hw.display1.width = 0
+INFO    | 	hw.display1.height = 0
+INFO    | 	hw.display1.density = 0
+INFO    | 	hw.display1.xOffset = -1
+INFO    | 	hw.display1.yOffset = -1
+INFO    | 	hw.display1.flag = 0
+INFO    | 	hw.display2.width = 0
+INFO    | 	hw.display2.height = 0
+INFO    | 	hw.display2.density = 0
+INFO    | 	hw.display2.xOffset = -1
+INFO    | 	hw.display2.yOffset = -1
+INFO    | 	hw.display2.flag = 0
+INFO    | 	hw.display3.width = 0
+INFO    | 	hw.display3.height = 0
+INFO    | 	hw.display3.density = 0
+INFO    | 	hw.display3.xOffset = -1
+INFO    | 	hw.display3.yOffset = -1
+INFO    | 	hw.display3.flag = 0
+INFO    | 	hw.gpu.enabled = true
+INFO    | 	hw.gpu.mode = host
+INFO    | 	hw.initialOrientation = portrait
+INFO    | 	hw.camera.back = emulated
+INFO    | 	hw.camera.front = none
+INFO    | 	vm.heapSize = 512
+INFO    | 	hw.sensors.light = true
+INFO    | 	hw.sensors.pressure = true
+INFO    | 	hw.sensors.humidity = true
+INFO    | 	hw.sensors.proximity = true
+INFO    | 	hw.sensors.magnetic_field = true
+INFO    | 	hw.sensors.magnetic_field_uncalibrated = true
+INFO    | 	hw.sensors.gyroscope_uncalibrated = true
+INFO    | 	hw.sensors.orientation = true
+INFO    | 	hw.sensors.temperature = true
+INFO    | 	hw.sensors.rgbclight = false
+INFO    | 	hw.sensor.hinge = false
+INFO    | 	hw.sensor.hinge.count = 0
+INFO    | 	hw.sensor.hinge.type = 0
+INFO    | 	hw.sensor.hinge.sub_type = 0
+INFO    | 	hw.sensor.hinge.fold_to_displayRegion.0.1_at_posture = 1
+INFO    | 	hw.sensor.roll = false
+INFO    | 	hw.sensor.roll.count = 0
+INFO    | 	hw.sensor.roll.resize_to_displayRegion.0.1_at_posture = 6
+INFO    | 	hw.sensor.roll.resize_to_displayRegion.0.2_at_posture = 6
+INFO    | 	hw.sensor.roll.resize_to_displayRegion.0.3_at_posture = 6
+INFO    | 	hw.sensors.heart_rate = false
+INFO    | 	hw.sensors.wrist_tilt = false
+INFO    | 	hw.useext4 = true
+INFO    | 	hw.arc = false
+INFO    | 	hw.arc.autologin = false
+INFO    | 	hw.device.name = pixel
+INFO    | 	kernel.path = /Users/bugrauysal/Library/Android/sdk/system-images/android-28/google_apis/x86//kernel-ranchu-64
+INFO    | 	kernel.newDeviceNaming = yes
+INFO    | 	kernel.supportsYaffs2 = no
+INFO    | 	disk.ramdisk.path = /Users/bugrauysal/Library/Android/sdk/system-images/android-28/google_apis/x86//ramdisk.img
+INFO    | 	disk.systemPartition.initPath = /Users/bugrauysal/Library/Android/sdk/system-images/android-28/google_apis/x86//system.img
+INFO    | 	disk.systemPartition.size = 2562m
+INFO    | 	disk.vendorPartition.initPath = /Users/bugrauysal/Library/Android/sdk/system-images/android-28/google_apis/x86//vendor.img
+INFO    | 	disk.vendorPartition.size = 800m
+INFO    | 	disk.dataPartition.path = /Users/bugrauysal/.android/avd/pixel_9.0.avd/userdata-qemu.img
+INFO    | 	disk.dataPartition.initPath = /Users/bugrauysal/.android/avd/pixel_9.0.avd/userdata.img
+INFO    | 	disk.dataPartition.size = 4g
+INFO    | 	disk.encryptionKeyPartition.path = /Users/bugrauysal/.android/avd/pixel_9.0.avd/encryptionkey.img
+INFO    | 	PlayStore.enabled = false
+INFO    | 	avd.name = pixel_9.0
+INFO    | 	avd.id = pixel_9.0
+INFO    | 	fastboot.forceColdBoot = false
+INFO    | 	android.sdk.root = /Users/bugrauysal/Library/Android/sdk
+INFO    | 	android.avd.home = /Users/bugrauysal/.android/avd
+INFO    | .
+INFO    | QEMU options list:
+INFO    | 	 argv[00] = "/Users/bugrauysal/Library/Android/sdk/emulator/qemu/darwin-x86_64/qemu-system-x86_64"
+INFO    | 	 argv[01] = "-dns-server"
+INFO    | 	 argv[02] = "192.168.3.1"
+INFO    | 	 argv[03] = "-no-audio"
+INFO    | 	 argv[04] = "-mem-path"
+INFO    | 	 argv[05] = "/Users/bugrauysal/.android/avd/pixel_9.0.avd/snapshots/default_boot/ram.img"
+INFO    | 	 argv[06] = "-mem-file-shared"
+INFO    | 	 argv[07] = "-serial"
+INFO    | 	 argv[08] = "null"
+INFO    | 	 argv[09] = "-android-ports"
+INFO    | 	 argv[10] = "16610,16611"
+INFO    | 	 argv[11] = "-device"
+INFO    | 	 argv[12] = "goldfish_pstore,addr=0xff018000,size=0x10000,file=/Users/bugrauysal/.android/avd/pixel_9.0.avd/data/misc/pstore/pstore.bin"
+INFO    | 	 argv[13] = "-cpu"
+INFO    | 	 argv[14] = "android64"
+INFO    | 	 argv[15] = "-enable-hvf"
+INFO    | 	 argv[16] = "-smp"
+INFO    | 	 argv[17] = "cores=2"
+INFO    | 	 argv[18] = "-m"
+INFO    | 	 argv[19] = "2048"
+INFO    | 	 argv[20] = "-lcd-density"
+INFO    | 	 argv[21] = "420"
+INFO    | 	 argv[22] = "-nodefaults"
+INFO    | 	 argv[23] = "-kernel"
+INFO    | 	 argv[24] = "/Users/bugrauysal/Library/Android/sdk/system-images/android-28/google_apis/x86//kernel-ranchu-64"
+INFO    | 	 argv[25] = "-initrd"
+INFO    | 	 argv[26] = "/Users/bugrauysal/Library/Android/sdk/system-images/android-28/google_apis/x86//ramdisk.img"
+INFO    | 	 argv[27] = "-drive"
+INFO    | 	 argv[28] = "if=none,index=0,id=system,if=none,file=/Users/bugrauysal/Library/Android/sdk/system-images/android-28/google_apis/x86//system.img,read-only"
+INFO    | 	 argv[29] = "-device"
+INFO    | 	 argv[30] = "virtio-blk-pci,drive=system,modern-pio-notify"
+INFO    | 	 argv[31] = "-drive"
+INFO    | 	 argv[32] = "if=none,index=1,id=cache,if=none,file=/Users/bugrauysal/.android/avd/pixel_9.0.avd/cache.img.qcow2,overlap-check=none,cache=unsafe,l2-cache-size=1048576"
+INFO    | 	 argv[33] = "-device"
+INFO    | 	 argv[34] = "virtio-blk-pci,drive=cache,modern-pio-notify"
+INFO    | 	 argv[35] = "-drive"
+INFO    | 	 argv[36] = "if=none,index=2,id=userdata,if=none,file=/Users/bugrauysal/.android/avd/pixel_9.0.avd/userdata-qemu.img.qcow2,overlap-check=none,cache=unsafe,l2-cache-size=1048576"
+INFO    | 	 argv[37] = "-device"
+INFO    | 	 argv[38] = "virtio-blk-pci,drive=userdata,modern-pio-notify"
+INFO    | 	 argv[39] = "-drive"
+INFO    | 	 argv[40] = "if=none,index=3,id=encrypt,if=none,file=/Users/bugrauysal/.android/avd/pixel_9.0.avd/encryptionkey.img.qcow2,overlap-check=none,cache=unsafe,l2-cache-size=1048576"
+INFO    | 	 argv[41] = "-device"
+INFO    | 	 argv[42] = "virtio-blk-pci,drive=encrypt,modern-pio-notify"
+INFO    | 	 argv[43] = "-drive"
+INFO    | 	 argv[44] = "if=none,index=4,id=vendor,if=none,file=/Users/bugrauysal/Library/Android/sdk/system-images/android-28/google_apis/x86//vendor.img,read-only"
+INFO    | 	 argv[45] = "-device"
+INFO    | 	 argv[46] = "virtio-blk-pci,drive=vendor,modern-pio-notify"
+INFO    | 	 argv[47] = "-netdev"
+INFO    | 	 argv[48] = "user,id=mynet"
+INFO    | 	 argv[49] = "-device"
+INFO    | 	 argv[50] = "virtio-net-pci,netdev=mynet"
+INFO    | 	 argv[51] = "-device"
+INFO    | 	 argv[52] = "virtio-rng-pci"
+INFO    | 	 argv[53] = "-show-cursor"
+INFO    | 	 argv[54] = "-L"
+INFO    | 	 argv[55] = "/Users/bugrauysal/Library/Android/sdk/emulator/lib/pc-bios"
+INFO    | 	 argv[56] = "-soundhw"
+INFO    | 	 argv[57] = "hda"
+INFO    | 	 argv[58] = "-vga"
+INFO    | 	 argv[59] = "none"
+INFO    | 	 argv[60] = "-append"
+INFO    | 	 argv[61] = "no_timer_check clocksource=pit no-kvmclock console=0 cma=288M@0-4G mac80211_hwsim.radios=2 mac80211_hwsim.channels=2 skip_initramfs rootwait ro init=/init loop.max_part=7 ramoops.mem_address=0xff018000 ramoops.mem_size=0x10000 memmap=0x10000$0xff018000 printk.devkmsg=on qemu=1 androidboot.hardware=ranchu androidboot.serialno=EMULATOR31X2X8X0 android.bootanim=0 qemu.gles=1 qemu.settings.system.screen_off_timeout=2147483647 qemu.encrypt=1 qemu.vsync=60 qemu.gltransport=pipe qemu.gltransport.drawFlushInterval=800 qemu.opengles.version=196608 qemu.uirenderer=skiagl qemu.dalvik.vm.heapsize=512m qemu.camera_hq_edge_processing=0 androidboot.android_dt_dir=/sys/bus/platform/devices/ANDR0001:00/properties/android/ dm="1 vroot none ro 1,0 5159992 verity 1 PARTUUID=CCBCABD5-6445-412D-A10F-2F74DBBACCD1 PARTUUID=CCBCABD5-6445-412D-A10F-2F74DBBACCD1 4096 4096 644999 644999 sha1 0011390ef3aa44087ea27d0e16a4107410518496 7e1037d90feb2438fcc16ac51c9aca000bcf6746 1 ignore_zero_blocks" androidboot.veritymode=enforcing androidboot.verifiedbootstate=orange root=/dev/dm-0 qemu.wifi=1 android.qemud=1 qemu.avd_name=pixel_9.0"
+INFO    | 	 argv[62] = "-android-hw"
+INFO    | 	 argv[63] = "/Users/bugrauysal/.android/avd/pixel_9.0.avd/hardware-qemu.ini"
+INFO    | Concatenated QEMU options: /Users/bugrauysal/Library/Android/sdk/emulator/qemu/darwin-x86_64/qemu-system-x86_64 -dns-server 192.168.3.1 -no-audio -mem-path /Users/bugrauysal/.android/avd/pixel_9.0.avd/snapshots/default_boot/ram.img -mem-file-shared -serial null -android-ports 16610,16611 -device goldfish_pstore,addr=0xff018000,size=0x10000,file=/Users/bugrauysal/.android/avd/pixel_9.0.avd/data/misc/pstore/pstore.bin -cpu android64 -enable-hvf -smp cores=2 -m 2048 -lcd-density 420 -nodefaults -kernel /Users/bugrauysal/Library/Android/sdk/system-images/android-28/google_apis/x86//kernel-ranchu-64 -initrd /Users/bugrauysal/Library/Android/sdk/system-images/android-28/google_apis/x86//ramdisk.img -drive if=none,index=0,id=system,if=none,file=/Users/bugrauysal/Library/Android/sdk/system-images/android-28/google_apis/x86//system.img,read-only -device virtio-blk-pci,drive=system,modern-pio-notify -drive if=none,index=1,id=cache,if=none,file=/Users/bugrauysal/.android/avd/pixel_9.0.avd/cache.img.qcow2,overlap-check=none,cache=unsafe,l2-cache-size=1048576 -device virtio-blk-pci,drive=cache,modern-pio-notify -drive if=none,index=2,id=userdata,if=none,file=/Users/bugrauysal/.android/avd/pixel_9.0.avd/userdata-qemu.img.qcow2,overlap-check=none,cache=unsafe,l2-cache-size=1048576 -device virtio-blk-pci,drive=userdata,modern-pio-notify -drive if=none,index=3,id=encrypt,if=none,file=/Users/bugrauysal/.android/avd/pixel_9.0.avd/encryptionkey.img.qcow2,overlap-check=none,cache=unsafe,l2-cache-size=1048576 -device virtio-blk-pci,drive=encrypt,modern-pio-notify -drive if=none,index=4,id=vendor,if=none,file=/Users/bugrauysal/Library/Android/sdk/system-images/android-28/google_apis/x86//vendor.img,read-only -device virtio-blk-pci,drive=vendor,modern-pio-notify -netdev user,id=mynet -device virtio-net-pci,netdev=mynet -device virtio-rng-pci -show-cursor -L /Users/bugrauysal/Library/Android/sdk/emulator/lib/pc-bios -soundhw hda -vga none -append 'no_timer_check clocksource=pit no-kvmclock console=0 cma=288M@0-4G mac80211_hwsim.radios=2 mac80211_hwsim.channels=2 skip_initramfs rootwait ro init=/init loop.max_part=7 ramoops.mem_address=0xff018000 ramoops.mem_size=0x10000 memmap=0x10000$0xff018000 printk.devkmsg=on qemu=1 androidboot.hardware=ranchu androidboot.serialno=EMULATOR31X2X8X0 android.bootanim=0 qemu.gles=1 qemu.settings.system.screen_off_timeout=2147483647 qemu.encrypt=1 qemu.vsync=60 qemu.gltransport=pipe qemu.gltransport.drawFlushInterval=800 qemu.opengles.version=196608 qemu.uirenderer=skiagl qemu.dalvik.vm.heapsize=512m qemu.camera_hq_edge_processing=0 androidboot.android_dt_dir=/sys/bus/platform/devices/ANDR0001:00/properties/android/ dm="1 vroot none ro 1,0 5159992 verity 1 PARTUUID=CCBCABD5-6445-412D-A10F-2F74DBBACCD1 PARTUUID=CCBCABD5-6445-412D-A10F-2F74DBBACCD1 4096 4096 644999 644999 sha1 0011390ef3aa44087ea27d0e16a4107410518496 7e1037d90feb2438fcc16ac51c9aca000bcf6746 1 ignore_zero_blocks" androidboot.veritymode=enforcing androidboot.verifiedbootstate=orange root=/dev/dm-0 qemu.wifi=1 android.qemud=1 qemu.avd_name=pixel_9.0' -android-hw /Users/bugrauysal/.android/avd/pixel_9.0.avd/hardware-qemu.ini
+VERBOSE | Android qemu version 31.2.8.0 (build_id 8143646) (CL:N/A)
+VERBOSE | Starting QEMU main loop
+VERBOSE | Adding boot property: 'ro.opengles.version' = '196608'
+VERBOSE | Adding boot property: 'qemu.sf.fake_camera' = 'back'
+VERBOSE | Adding boot property: 'dalvik.vm.heapsize' = '512m'
+VERBOSE | Adding boot property: 'qemu.hw.mainkeys' = '0'
+VERBOSE | Adding boot property: 'qemu.sf.lcd_density' = '420'
+VERBOSE | goldfish_events.have-dpad: false
+VERBOSE | goldfish_events.have-trackball: false
+VERBOSE | goldfish_events.have-camera: true
+VERBOSE | goldfish_events.have-keyboard: false
+VERBOSE | goldfish_events.have-lidswitch: false
+VERBOSE | goldfish_events.have-tabletmode: false
+VERBOSE | goldfish_events.have-touch: false
+VERBOSE | goldfish_events.have-multitouch: true
+WARNING | Requested adb port (16611) is outside the recommended range [5555,5586]. ADB may not function properly for the emulator. See -help-port for details.
+VERBOSE | Not using any http proxy
+VERBOSE | Adding boot property: 'qemu.timezone' = 'Europe/Tallinn'
+VERBOSE | android_hw_fingerprint_init: fingerprint qemud listen service initialized
+VERBOSE | emulator_window_fb_rotate
+VERBOSE | No acpi ini file provided, using default
+VERBOSE | OpenGL Vendor=[Google (ATI Technologies Inc.)]
+VERBOSE | OpenGL Renderer=[Android Emulator OpenGL ES Translator (AMD Radeon Pro 5300M OpenGL Engine)]
+VERBOSE | OpenGL Version=[OpenGL ES 3.0 (4.1 ATI-4.8.101)]
+VERBOSE | Path:/Users/bugrauysal/Library/Android/sdk/platform-tools/adb protocol version: 41
+VERBOSE | Path:/Users/bugrauysal/Library/Android/sdk/platform-tools/adb protocol version: 41
+VERBOSE | Path:/Users/bugrauysal/Library/Android/sdk/platform-tools/adb protocol version: 41
+VERBOSE | Found: 3 adb executables
+VERBOSE | Adb: /Users/bugrauysal/Library/Android/sdk/platform-tools/adb
+VERBOSE | Adb: /Users/bugrauysal/Library/Android/sdk/platform-tools/adb
+VERBOSE | Adb: /Users/bugrauysal/Library/Android/sdk/platform-tools/adb
+VERBOSE | Path:/Users/bugrauysal/Library/Android/sdk/platform-tools/adb protocol version: 41
+VERBOSE | Path:/Users/bugrauysal/Library/Android/sdk/platform-tools/adb protocol version: 41
+VERBOSE | Path:/Users/bugrauysal/Library/Android/sdk/platform-tools/adb protocol version: 41
+VERBOSE | No acpi ini file provided, using default
+VERBOSE | onGuestSendCommand: [0x7fbc3493bd30] Adb connected, start proxing data
+
+Aug 2 16:06:01 detox[34244] DEBUG: [EXEC_CMD, #3] "/Users/bugrauysal/Library/Android/sdk/platform-tools/adb" -s emulator-16610 shell "getprop dev.bootcomplete"
+Aug 2 16:06:01 detox[34244] TRACE: [EXEC_SUCCESS, #3] 
+
+Aug 2 16:06:04 detox[34244] DEBUG: [EXEC_CMD, #4] "/Users/bugrauysal/Library/Android/sdk/platform-tools/adb" -s emulator-16610 shell "getprop dev.bootcomplete"
+Aug 2 16:06:04 detox[34244] TRACE: [EXEC_SUCCESS, #4] 
+
+Aug 2 16:06:09 detox[34244] DEBUG: [EXEC_CMD, #5] "/Users/bugrauysal/Library/Android/sdk/platform-tools/adb" -s emulator-16610 shell "getprop dev.bootcomplete"
+Aug 2 16:06:09 detox[34244] TRACE: [EXEC_SUCCESS, #5] 
+
+Aug 2 16:06:16 detox[34244] DEBUG: [EXEC_CMD, #6] "/Users/bugrauysal/Library/Android/sdk/platform-tools/adb" -s emulator-16610 shell "getprop dev.bootcomplete"
+Aug 2 16:06:16 detox[34244] TRACE: [EXEC_SUCCESS, #6] 
+
+Aug 2 16:06:26 detox[34244] DEBUG: [EXEC_CMD, #7] "/Users/bugrauysal/Library/Android/sdk/platform-tools/adb" -s emulator-16610 shell "getprop dev.bootcomplete"
+Aug 2 16:06:26 detox[34244] TRACE: [EXEC_SUCCESS, #7] 1
+
+Aug 2 16:06:26 detox[34244] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onBootDevice({ deviceId: 'emulator-16610', type: 'pixel_9.0', coldBoot: true })
+Aug 2 16:06:26 detox[34244] DEBUG: [EXEC_CMD, #8] "/Users/bugrauysal/Library/Android/sdk/platform-tools/adb" -s emulator-16610 shell "getprop ro.build.version.sdk"
+Aug 2 16:06:26 detox[34244] TRACE: [EXEC_SUCCESS, #8] 28
+
+Aug 2 16:06:26 detox[34244] DEBUG: [EXEC_CMD, #9] "/Users/bugrauysal/Library/Android/sdk/platform-tools/adb" -s emulator-16610 shell "settings put global animator_duration_scale 0"
+Aug 2 16:06:27 detox[34244] TRACE: [EXEC_SUCCESS, #9] 
+Aug 2 16:06:27 detox[34244] DEBUG: [EXEC_CMD, #10] "/Users/bugrauysal/Library/Android/sdk/platform-tools/adb" -s emulator-16610 shell "settings put global window_animation_scale 0"
+Aug 2 16:06:27 detox[34244] TRACE: [EXEC_SUCCESS, #10] 
+Aug 2 16:06:27 detox[34244] DEBUG: [EXEC_CMD, #11] "/Users/bugrauysal/Library/Android/sdk/platform-tools/adb" -s emulator-16610 shell "settings put global transition_animation_scale 0"
+Aug 2 16:06:27 detox[34244] TRACE: [EXEC_SUCCESS, #11] 
+Aug 2 16:06:27 detox[34244] DEBUG: [EXEC_CMD, #12] "/Users/bugrauysal/Library/Android/sdk/platform-tools/adb" -s emulator-16610 shell "dumpsys power | grep \"^[ ]*m[UW].*=\""
+Aug 2 16:06:27 detox[34244] TRACE: [EXEC_SUCCESS, #12]   mWakefulness=Awake
+  mWakefulnessChanging=false
+  mWakeLockSummary=0x1
+  mUserActivitySummary=0x1
+  mWakeUpWhenPluggedOrUnpluggedConfig=false
+  mWakeUpWhenPluggedOrUnpluggedInTheaterModeConfig=false
+  mUserActivityTimeoutOverrideFromWindowManager=-1
+  mUserInactiveOverrideFromWindowManager=false
+
+Aug 2 16:06:27 detox[34244] DEBUG: [EXEC_CMD, #13] "/Users/bugrauysal/Library/Android/sdk/build-tools/31.0.0/aapt" dump badging "/Users/bugrauysal/Desktop/My-Repo/RNAppForTesting/android/app/build/outputs/apk/release/app-release.apk"
+Aug 2 16:06:27 detox[34244] TRACE: [EXEC_SUCCESS, #13] package: name='com.detoxsimplernapp' versionCode='1' versionName='1.0' compileSdkVersion='31' compileSdkVersionCodename='12'
+sdkVersion:'21'
+targetSdkVersion:'31'
+uses-permission: name='android.permission.INTERNET'
+uses-permission: name='android.permission.SYSTEM_ALERT_WINDOW'
+uses-permission: name='android.permission.VIBRATE'
+uses-permission: name='android.permission.READ_EXTERNAL_STORAGE'
+uses-permission: name='android.permission.WRITE_EXTERNAL_STORAGE'
+application-label:'detox-simple-rn-app'
+application-label-af:'detox-simple-rn-app'
+application-label-am:'detox-simple-rn-app'
+application-label-ar:'detox-simple-rn-app'
+application-label-as:'detox-simple-rn-app'
+application-label-az:'detox-simple-rn-app'
+application-label-be:'detox-simple-rn-app'
+application-label-bg:'detox-simple-rn-app'
+application-label-bn:'detox-simple-rn-app'
+application-label-bs:'detox-simple-rn-app'
+application-label-ca:'detox-simple-rn-app'
+application-label-cs:'detox-simple-rn-app'
+application-label-da:'detox-simple-rn-app'
+application-label-de:'detox-simple-rn-app'
+application-label-el:'detox-simple-rn-app'
+application-label-en-AU:'detox-simple-rn-app'
+application-label-en-CA:'detox-simple-rn-app'
+application-label-en-GB:'detox-simple-rn-app'
+application-label-en-IN:'detox-simple-rn-app'
+application-label-en-XC:'detox-simple-rn-app'
+application-label-es:'detox-simple-rn-app'
+application-label-es-US:'detox-simple-rn-app'
+application-label-et:'detox-simple-rn-app'
+application-label-eu:'detox-simple-rn-app'
+application-label-fa:'detox-simple-rn-app'
+application-label-fi:'detox-simple-rn-app'
+application-label-fr:'detox-simple-rn-app'
+application-label-fr-CA:'detox-simple-rn-app'
+application-label-gl:'detox-simple-rn-app'
+application-label-gu:'detox-simple-rn-app'
+application-label-hi:'detox-simple-rn-app'
+application-label-hr:'detox-simple-rn-app'
+application-label-hu:'detox-simple-rn-app'
+application-label-hy:'detox-simple-rn-app'
+application-label-in:'detox-simple-rn-app'
+application-label-is:'detox-simple-rn-app'
+application-label-it:'detox-simple-rn-app'
+application-label-iw:'detox-simple-rn-app'
+application-label-ja:'detox-simple-rn-app'
+application-label-ka:'detox-simple-rn-app'
+application-label-kk:'detox-simple-rn-app'
+application-label-km:'detox-simple-rn-app'
+application-label-kn:'detox-simple-rn-app'
+application-label-ko:'detox-simple-rn-app'
+application-label-ky:'detox-simple-rn-app'
+application-label-lo:'detox-simple-rn-app'
+application-label-lt:'detox-simple-rn-app'
+application-label-lv:'detox-simple-rn-app'
+application-label-mk:'detox-simple-rn-app'
+application-label-ml:'detox-simple-rn-app'
+application-label-mn:'detox-simple-rn-app'
+application-label-mr:'detox-simple-rn-app'
+application-label-ms:'detox-simple-rn-app'
+application-label-my:'detox-simple-rn-app'
+application-label-nb:'detox-simple-rn-app'
+application-label-ne:'detox-simple-rn-app'
+application-label-nl:'detox-simple-rn-app'
+application-label-or:'detox-simple-rn-app'
+application-label-pa:'detox-simple-rn-app'
+application-label-pl:'detox-simple-rn-app'
+application-label-pt:'detox-simple-rn-app'
+application-label-pt-BR:'detox-simple-rn-app'
+application-label-pt-PT:'detox-simple-rn-app'
+application-label-ro:'detox-simple-rn-app'
+application-label-ru:'detox-simple-rn-app'
+application-label-si:'detox-simple-rn-app'
+application-label-sk:'detox-simple-rn-app'
+application-label-sl:'detox-simple-rn-app'
+application-label-sq:'detox-simple-rn-app'
+application-label-sr:'detox-simple-rn-app'
+application-label-sr-Latn:'detox-simple-rn-app'
+application-label-sv:'detox-simple-rn-app'
+application-label-sw:'detox-simple-rn-app'
+application-label-ta:'detox-simple-rn-app'
+application-label-te:'detox-simple-rn-app'
+application-label-th:'detox-simple-rn-app'
+application-label-tl:'detox-simple-rn-app'
+application-label-tr:'detox-simple-rn-app'
+application-label-uk:'detox-simple-rn-app'
+application-label-ur:'detox-simple-rn-app'
+application-label-uz:'detox-simple-rn-app'
+application-label-vi:'detox-simple-rn-app'
+application-label-zh-CN:'detox-simple-rn-app'
+application-label-zh-HK:'detox-simple-rn-app'
+application-label-zh-TW:'detox-simple-rn-app'
+application-label-zu:'detox-simple-rn-app'
+application-icon-160:'res/u3.png'
+application-icon-240:'res/SD.png'
+application-icon-320:'res/jy.png'
+application-icon-480:'res/D2.png'
+application-icon-640:'res/CG.png'
+application: label='detox-simple-rn-app' icon='res/u3.png'
+launchable-activity: name='com.detoxsimplernapp.MainActivity'  label='detox-simple-rn-app' icon=''
+feature-group: label=''
+  uses-feature: name='android.hardware.faketouch'
+  uses-implied-feature: name='android.hardware.faketouch' reason='default feature for all apps'
+main
+other-activities
+supports-screens: 'small' 'normal' 'large' 'xlarge'
+supports-any-density: 'true'
+locales: '--_--' 'af' 'am' 'ar' 'as' 'az' 'be' 'bg' 'bn' 'bs' 'ca' 'cs' 'da' 'de' 'el' 'en-AU' 'en-CA' 'en-GB' 'en-IN' 'en-XC' 'es' 'es-US' 'et' 'eu' 'fa' 'fi' 'fr' 'fr-CA' 'gl' 'gu' 'hi' 'hr' 'hu' 'hy' 'in' 'is' 'it' 'iw' 'ja' 'ka' 'kk' 'km' 'kn' 'ko' 'ky' 'lo' 'lt' 'lv' 'mk' 'ml' 'mn' 'mr' 'ms' 'my' 'nb' 'ne' 'nl' 'or' 'pa' 'pl' 'pt' 'pt-BR' 'pt-PT' 'ro' 'ru' 'si' 'sk' 'sl' 'sq' 'sr' 'sr-Latn' 'sv' 'sw' 'ta' 'te' 'th' 'tl' 'tr' 'uk' 'ur' 'uz' 'vi' 'zh-CN' 'zh-HK' 'zh-TW' 'zu'
+densities: '160' '240' '320' '480' '640'
+native-code: 'arm64-v8a' 'armeabi-v7a' 'x86' 'x86_64'
+
+Aug 2 16:06:27 detox[34244] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onBeforeTerminateApp({ deviceId: 'emulator-16610', bundleId: 'com.detoxsimplernapp' })
+Aug 2 16:06:27 detox[34244] DEBUG: [EXEC_CMD, #14] "/Users/bugrauysal/Library/Android/sdk/platform-tools/adb" -s emulator-16610 shell "am force-stop com.detoxsimplernapp"
+Aug 2 16:06:27 detox[34244] TRACE: [EXEC_SUCCESS, #14] 
+Aug 2 16:06:27 detox[34244] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onTerminateApp({ deviceId: 'emulator-16610', bundleId: 'com.detoxsimplernapp' })
+Aug 2 16:06:27 detox[34244] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onBeforeUninstallApp({ deviceId: 'emulator-16610', bundleId: 'com.detoxsimplernapp' })
+Aug 2 16:06:27 detox[34244] DEBUG: [EXEC_CMD, #15] "/Users/bugrauysal/Library/Android/sdk/platform-tools/adb" -s emulator-16610 shell "pm list packages com.detoxsimplernapp"
+Aug 2 16:06:27 detox[34244] TRACE: [EXEC_SUCCESS, #15] 
+Aug 2 16:06:27 detox[34244] DEBUG: [EXEC_CMD, #16] "/Users/bugrauysal/Library/Android/sdk/platform-tools/adb" -s emulator-16610 shell "pm list packages com.detoxsimplernapp.test"
+Aug 2 16:06:28 detox[34244] TRACE: [EXEC_SUCCESS, #16] 
+Aug 2 16:06:28 detox[34244] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onBeforeTerminateApp({ deviceId: 'emulator-16610', bundleId: 'com.detoxsimplernapp' })
+Aug 2 16:06:28 detox[34244] DEBUG: [EXEC_CMD, #17] "/Users/bugrauysal/Library/Android/sdk/platform-tools/adb" -s emulator-16610 shell "am force-stop com.detoxsimplernapp"
+Aug 2 16:06:30 detox[34244] TRACE: [EXEC_SUCCESS, #17] 
+Aug 2 16:06:30 detox[34244] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onTerminateApp({ deviceId: 'emulator-16610', bundleId: 'com.detoxsimplernapp' })
+Aug 2 16:06:30 detox[34244] DEBUG: [EXEC_CMD, #18] "/Users/bugrauysal/Library/Android/sdk/build-tools/31.0.0/aapt" dump xmlstrings "/Users/bugrauysal/Desktop/My-Repo/RNAppForTesting/android/app/build/outputs/apk/release/app-release.apk" AndroidManifest.xml
+Aug 2 16:06:30 detox[34244] TRACE: [EXEC_SUCCESS, #18] String pool of 63 unique UTF-16 non-sorted strings, 63 entries and 0 styles using 2808 bytes:
+String #0: theme
+String #1: label
+String #2: icon
+String #3: name
+String #4: exported
+String #5: authorities
+String #6: launchMode
+String #7: configChanges
+String #8: value
+String #9: scheme
+String #10: minSdkVersion
+String #11: versionCode
+String #12: versionName
+String #13: windowSoftInputMode
+String #14: targetSdkVersion
+String #15: allowBackup
+String #16: usesCleartextTraffic
+String #17: networkSecurityConfig
+String #18: roundIcon
+String #19: compileSdkVersion
+String #20: compileSdkVersionCodename
+String #21: appComponentFactory
+String #22:  > 
+String #23: 1.0
+String #24: 12
+String #25: action
+String #26: activity
+String #27: android
+String #28: android.intent.action.MAIN
+String #29: android.intent.action.VIEW
+String #30: android.intent.category.BROWSABLE
+String #31: android.intent.category.LAUNCHER
+String #32: android.permission.INTERNET
+String #33: android.permission.READ_EXTERNAL_STORAGE
+String #34: android.permission.SYSTEM_ALERT_WINDOW
+String #35: android.permission.VIBRATE
+String #36: android.permission.WRITE_EXTERNAL_STORAGE
+String #37: androidx.core.app.CoreComponentFactory
+String #38: androidx.emoji2.text.EmojiCompatInitializer
+String #39: androidx.lifecycle.ProcessLifecycleInitializer
+String #40: androidx.startup
+String #41: androidx.startup.InitializationProvider
+String #42: application
+String #43: category
+String #44: com.detoxsimplernapp
+String #45: com.detoxsimplernapp.MainActivity
+String #46: com.detoxsimplernapp.MainApplication
+String #47: com.detoxsimplernapp.androidx-startup
+String #48: com.facebook.react.devsupport.DevSettingsActivity
+String #49: data
+String #50: http://schemas.android.com/apk/res/android
+String #51: https
+String #52: intent
+String #53: intent-filter
+String #54: manifest
+String #55: meta-data
+String #56: package
+String #57: platformBuildVersionCode
+String #58: platformBuildVersionName
+String #59: provider
+String #60: queries
+String #61: uses-permission
+String #62: uses-sdk
+
+Aug 2 16:06:30 detox[34244] DEBUG: [EXEC_CMD, #19] "/Users/bugrauysal/Library/Android/sdk/build-tools/31.0.0/aapt" dump xmlstrings "/Users/bugrauysal/Desktop/My-Repo/RNAppForTesting/android/app/build/outputs/apk/androidTest/release/app-release-androidTest.apk" AndroidManifest.xml
+Aug 2 16:06:30 detox[34244] TRACE: [EXEC_SUCCESS, #19] String pool of 40 unique UTF-16 non-sorted strings, 40 entries and 0 styles using 2036 bytes:
+String #0: theme
+String #1: label
+String #2: name
+String #3: exported
+String #4: targetPackage
+String #5: handleProfiling
+String #6: functionalTest
+String #7: minSdkVersion
+String #8: targetSdkVersion
+String #9: compileSdkVersion
+String #10: compileSdkVersionCodename
+String #11: 12
+String #12: Tests for com.detoxsimplernapp
+String #13: action
+String #14: activity
+String #15: android
+String #16: android.intent.action.MAIN
+String #17: android.permission.REORDER_TASKS
+String #18: android.test.runner
+String #19: androidx.test.core.app.InstrumentationActivityInvoker$BootstrapActivity
+String #20: androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity
+String #21: androidx.test.core.app.InstrumentationActivityInvoker$EmptyFloatingActivity
+String #22: androidx.test.orchestrator
+String #23: androidx.test.runner.AndroidJUnitRunner
+String #24: androidx.test.services
+String #25: application
+String #26: com.detoxsimplernapp
+String #27: com.detoxsimplernapp.test
+String #28: com.google.android.apps.common.testing.services
+String #29: http://schemas.android.com/apk/res/android
+String #30: instrumentation
+String #31: intent-filter
+String #32: manifest
+String #33: package
+String #34: platformBuildVersionCode
+String #35: platformBuildVersionName
+String #36: queries
+String #37: uses-library
+String #38: uses-permission
+String #39: uses-sdk
+
+Aug 2 16:06:30 detox[34244] DEBUG: [EXEC_CMD, #20] "/Users/bugrauysal/Library/Android/sdk/platform-tools/adb" -s emulator-16610 shell "rm -fr /data/local/tmp/detox"
+Aug 2 16:06:32 detox[34244] TRACE: [EXEC_SUCCESS, #20] 
+Aug 2 16:06:32 detox[34244] DEBUG: [EXEC_CMD, #21] "/Users/bugrauysal/Library/Android/sdk/platform-tools/adb" -s emulator-16610 shell "mkdir -p /data/local/tmp/detox"
+Aug 2 16:06:33 detox[34244] TRACE: [EXEC_SUCCESS, #21] 
+Aug 2 16:06:33 detox[34244] DEBUG: [EXEC_CMD, #22] "/Users/bugrauysal/Library/Android/sdk/platform-tools/adb" -s emulator-16610 push "/Users/bugrauysal/Desktop/My-Repo/RNAppForTesting/android/app/build/outputs/apk/release/app-release.apk" "/data/local/tmp/detox/Application.apk"
+Aug 2 16:06:39 detox[34244] TRACE: [EXEC_SUCCESS, #22] /Users/bugrauysal/Desktop/My-Repo/RNAppForTesting/android/app/build/outputs/apk/release/app-release.apk: 1 file pushed, 0 skipped. 5.2 MB/s (27065645 bytes in 4.990s)
+
+Aug 2 16:06:39 detox[34244] DEBUG: [SPAWN_CMD, #23, cpid=34396] /Users/bugrauysal/Library/Android/sdk/platform-tools/adb -s emulator-16610 shell pm install -r -g -t /data/local/tmp/detox/Application.apk
+Aug 2 16:07:24 detox[34244] DEBUG: [SPAWN_END, #23, cpid=34396] /Users/bugrauysal/Library/Android/sdk/platform-tools/adb -s emulator-16610 shell pm install -r -g -t /data/local/tmp/detox/Application.apk terminated with SIGTERM
+Aug 2 16:07:24 detox[34244] TRACE: [SPAWN_TRY_FAIL, #23] 
+Aug 2 16:07:24 detox[34244] DEBUG: [SPAWN_CMD, #23, cpid=34449] (Retry #1) /Users/bugrauysal/Library/Android/sdk/platform-tools/adb -s emulator-16610 shell pm install -r -g -t /data/local/tmp/detox/Application.apk
+Aug 2 16:07:48 detox[34244] TRACE: [SPAWN_STDOUT, #23, cpid=34449] Success
+
+Aug 2 16:07:48 detox[34244] DEBUG: [SPAWN_END, #23, cpid=34449] /Users/bugrauysal/Library/Android/sdk/platform-tools/adb -s emulator-16610 shell pm install -r -g -t /data/local/tmp/detox/Application.apk exited with code #0
+Aug 2 16:07:48 detox[34244] DEBUG: [EXEC_CMD, #24] "/Users/bugrauysal/Library/Android/sdk/platform-tools/adb" -s emulator-16610 push "/Users/bugrauysal/Desktop/My-Repo/RNAppForTesting/android/app/build/outputs/apk/androidTest/release/app-release-androidTest.apk" "/data/local/tmp/detox/Test.apk"
+Aug 2 16:07:49 detox[34244] TRACE: [EXEC_SUCCESS, #24] /Users/bugrauysal/Desktop/My-Repo/RNAppForTesting/android/app/build/outputs/apk/androidTest/release/app-release-androidTest.apk: 1 file pushed, 0 skipped. 107.0 MB/s (2415890 bytes in 0.022s)
+
+Aug 2 16:07:49 detox[34244] DEBUG: [SPAWN_CMD, #25, cpid=34524] /Users/bugrauysal/Library/Android/sdk/platform-tools/adb -s emulator-16610 shell pm install -r -g -t /data/local/tmp/detox/Test.apk
+Aug 2 16:07:50 detox[34244] TRACE: [SPAWN_STDOUT, #25, cpid=34524] Success
+
+Aug 2 16:07:50 detox[34244] DEBUG: [SPAWN_END, #25, cpid=34524] /Users/bugrauysal/Library/Android/sdk/platform-tools/adb -s emulator-16610 shell pm install -r -g -t /data/local/tmp/detox/Test.apk exited with code #0
+Aug 2 16:07:50 ROOT_DESCRIBE_BLOCK[34244] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onRunDescribeStart({ name: 'ROOT_DESCRIBE_BLOCK' })
+Aug 2 16:07:50 Example[34244] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onRunDescribeStart({ name: 'Example' })
+Aug 2 16:07:50 detox[34244] INFO:  [97mExample[39m is assigned to [94memulator-16610 (pixel_9.0)[39m
+Aug 2 16:07:50 detox[34244] INFO:  [1m[37mExample: [39m[22m[90mshould have welcome screen[39m
+Aug 2 16:07:50 detox[34244] TRACE: [DETOX_BEFORE_EACH] running test: "Example should have welcome screen"
+Aug 2 16:07:50 detox[34244] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onTestStart({
+  title: 'should have welcome screen',
+  fullName: 'Example should have welcome screen',
+  status: 'running',
+  invocations: 1
+})
+Aug 2 16:07:50 detox[34244] TRACE: [ARTIFACT_START] starting AndroidInstrumentsRecording
+Aug 2 16:07:50 detox[34244] TRACE: [ARTIFACT_START] starting ADBLogcatRecording
+Aug 2 16:07:50 detox[34244] DEBUG: [SPAWN_CMD, #26, cpid=34529] /Users/bugrauysal/Library/Android/sdk/platform-tools/adb -s emulator-16610 shell "logcat -f /sdcard/16556601_1.log"
+Aug 2 16:07:50 detox[34244] TRACE: [ARTIFACT_START] starting ADBVideoRecording
+Aug 2 16:07:50 detox[34244] DEBUG: [SPAWN_CMD, #27, cpid=34530] /Users/bugrauysal/Library/Android/sdk/platform-tools/adb -s emulator-16610 shell screenrecord /sdcard/16556601_2.mp4
+Aug 2 16:07:50 detox[34244] DEBUG: [EXEC_CMD, #28] "/Users/bugrauysal/Library/Android/sdk/platform-tools/adb" -s emulator-16610 shell du /sdcard/16556601_1.log
+Aug 2 16:07:50 detox[34244] DEBUG: [EXEC_CMD, #29] "/Users/bugrauysal/Library/Android/sdk/platform-tools/adb" -s emulator-16610 shell du /sdcard/16556601_2.mp4
+Aug 2 16:07:50 detox[34244] TRACE: [EXEC_SUCCESS, #29] 44	/sdcard/16556601_2.mp4
+
+Aug 2 16:07:50 detox[34244] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onBeforeTerminateApp({ deviceId: 'emulator-16610', bundleId: 'com.detoxsimplernapp' })
+Aug 2 16:07:50 detox[34244] TRACE: [ARTIFACT_STOP] stopping AndroidInstrumentsRecording
+Aug 2 16:07:50 detox[34244] DEBUG: [EXEC_CMD, #30] "/Users/bugrauysal/Library/Android/sdk/platform-tools/adb" -s emulator-16610 shell "am force-stop com.detoxsimplernapp"
+Aug 2 16:07:50 detox[34244] TRACE: [EXEC_SUCCESS, #28] 1856	/sdcard/16556601_1.log
+
+Aug 2 16:07:51 detox[34244] TRACE: [EXEC_SUCCESS, #30] 
+Aug 2 16:07:51 detox[34244] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onTerminateApp({ deviceId: 'emulator-16610', bundleId: 'com.detoxsimplernapp' })
+Aug 2 16:07:51 detox[34244] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onBeforeLaunchApp({
+  deviceId: 'emulator-16610',
+  bundleId: 'com.detoxsimplernapp',
+  launchArgs: {
+    detoxServer: 'ws://localhost:55850',
+    detoxSessionId: 'fff44881-01de-007b-3392-0a95bb5c4e1d'
+  }
+})
+Aug 2 16:07:51 detox[34244] DEBUG: [EXEC_CMD, #31] "/Users/bugrauysal/Library/Android/sdk/platform-tools/adb" -s emulator-16610 shell "date +\"%m-%d %T.000\""
+Aug 2 16:07:51 detox[34244] TRACE: [EXEC_SUCCESS, #31] 08-02 16:07:50.000
+
+Aug 2 16:07:51 detox[34244] DEBUG: [EXEC_CMD, #32] "/Users/bugrauysal/Library/Android/sdk/platform-tools/adb" -s emulator-16610 reverse tcp:55850 tcp:55850
+Aug 2 16:07:51 detox[34244] TRACE: [EXEC_SUCCESS, #32] 
+Aug 2 16:07:51 detox[34244] DEBUG: [EXEC_CMD, #33] "/Users/bugrauysal/Library/Android/sdk/platform-tools/adb" -s emulator-16610 shell "pm list instrumentation"
+Aug 2 16:07:51 detox[34244] TRACE: [EXEC_SUCCESS, #33] instrumentation:com.detoxsimplernapp.test/androidx.test.runner.AndroidJUnitRunner (target=com.detoxsimplernapp)
+instrumentation:org.chromium.webview_shell/.WebViewLayoutTestRunner (target=org.chromium.webview_shell)
+
+Aug 2 16:07:51 detox[34244] DEBUG: [SPAWN_CMD, #34, cpid=34538] /Users/bugrauysal/Library/Android/sdk/platform-tools/adb -s emulator-16610 shell am instrument -w -r -e detoxServer ws://localhost:55850 -e detoxSessionId fff44881-01de-007b-3392-0a95bb5c4e1d -e detoxInstrumRecPath /sdcard/16556601_0.dtxplain -e debug false com.detoxsimplernapp.test/androidx.test.runner.AndroidJUnitRunner
+Aug 2 16:07:51 detox[34244] DEBUG: [EXEC_CMD, #35] "/Users/bugrauysal/Library/Android/sdk/platform-tools/adb" -s emulator-16610 shell "ps | grep \"com\.detoxsimplernapp$\""
+Aug 2 16:07:51 detox[34244] TRACE: [EXEC_SUCCESS, #35] u0_a85        5407  1733 1707252  96160 0                   0 R com.detoxsimplernapp
+
+Aug 2 16:07:51 detox[5407] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onLaunchApp({
+  deviceId: 'emulator-16610',
+  bundleId: 'com.detoxsimplernapp',
+  launchArgs: {
+    detoxServer: 'ws://localhost:55850',
+    detoxSessionId: 'fff44881-01de-007b-3392-0a95bb5c4e1d',
+    detoxInstrumRecPath: '/sdcard/16556601_0.dtxplain'
+  },
+  pid: 5407
+})
+Aug 2 16:07:51 detox[34244] TRACE: [ARTIFACT_START] starting AndroidInstrumentsRecording { dry: true }
+Aug 2 16:07:51 detox[34244] TRACE: [ARTIFACT_START] starting ADBLogcatRecording
+Aug 2 16:07:51 detox[34244] TRACE: [ARTIFACT_STOP] stopping ADBLogcatRecording
+Aug 2 16:07:51 detox[34244] DEBUG: [EXEC_CMD, #36] "/Users/bugrauysal/Library/Android/sdk/platform-tools/adb" -s emulator-16610 shell "date +\"%m-%d %T.000\""
+Aug 2 16:07:51 detox[34244] TRACE: [EXEC_SUCCESS, #36] 08-02 16:07:51.000
+
+Aug 2 16:07:51 detox[34529] TRACE: [SPAWN_KILL] sending SIGINT to: /Users/bugrauysal/Library/Android/sdk/platform-tools/adb -s emulator-16610 shell logcat -f /sdcard/16556601_1.log
+Aug 2 16:07:51 detox[34244] DEBUG: [SPAWN_END, #26, cpid=34529] /Users/bugrauysal/Library/Android/sdk/platform-tools/adb -s emulator-16610 shell "logcat -f /sdcard/16556601_1.log" terminated with SIGINT
+Aug 2 16:07:51 detox[34244] DEBUG: [SPAWN_CMD, #37, cpid=34541] /Users/bugrauysal/Library/Android/sdk/platform-tools/adb -s emulator-16610 shell "logcat -T \"08-02 16:07:51.000\" --pid=5407 -f /sdcard/16556601_1.log"
+Aug 2 16:07:52 detox[34244] DEBUG: [EXEC_CMD, #38] "/Users/bugrauysal/Library/Android/sdk/platform-tools/adb" -s emulator-16610 shell du /sdcard/16556601_1.log
+Aug 2 16:07:52 detox[34244] TRACE: [EXEC_SUCCESS, #38] 1908	/sdcard/16556601_1.log
+
+Aug 2 16:07:52 detox[34244] TRACE: [SPAWN_STDOUT, #34, cpid=34538] INSTRUMENTATION_STATUS: class=com.detoxsimplernapp.DetoxTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.detoxsimplernapp.DetoxTest:
+INSTRUMENTATION_STATUS: test=runDetoxTests
+INSTRUMENTATION_STATUS_CODE: 1
+
+Aug 2 16:07:53 detox[34244] DEBUG: [WSS_CONNECTION, #56329] registered a new connection.
+Aug 2 16:07:53 detox[34244] TRACE: [WSS_GET_FROM, #56329] {"messageId":0,"type":"login","params":{"role":"app","sessionId":"fff44881-01de-007b-3392-0a95bb5c4e1d"}}
+Aug 2 16:07:53 detox[34244] TRACE: [WSS_SEND_TO, #app] {"messageId":0,"type":"loginSuccess","params":{"testerConnected":true,"appConnected":true}}
+Aug 2 16:07:53 detox[34244] TRACE: [SESSION_JOINED] app joined session fff44881-01de-007b-3392-0a95bb5c4e1d
+Aug 2 16:07:53 detox[34244] TRACE: [WSS_SEND_TO, #tester] {"type":"appConnected"}
+Aug 2 16:07:53 detox[34244] TRACE: [WS_MESSAGE] {"type":"appConnected"}
+ 
+Aug 2 16:07:53 detox[34244] TRACE: [WS_SEND] {"type":"isReady","params":{},"messageId":-1000}
+Aug 2 16:07:53 detox[34244] TRACE: [WSS_GET_FROM, #tester] {"type":"isReady","params":{},"messageId":-1000}
+Aug 2 16:07:53 detox[34244] TRACE: [WSS_SEND_TO, #app] {"type":"isReady","params":{},"messageId":-1000}
+Aug 2 16:07:53 detox[34244] TRACE: [WSS_GET_FROM, #app] {"messageId":-1000,"type":"ready","params":{}}
+Aug 2 16:07:53 detox[34244] TRACE: [WSS_SEND_TO, #tester] {"messageId":-1000,"type":"ready","params":{}}
+Aug 2 16:07:53 detox[34244] TRACE: [WS_MESSAGE] {"messageId":-1000,"type":"ready","params":{}}
+ 
+Aug 2 16:07:53 detox[5407] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onAppReady({
+  deviceId: 'emulator-16610',
+  bundleId: 'com.detoxsimplernapp',
+  pid: 5407
+})
+Aug 2 16:07:53 detox[34244] INFO:  at e2e/firstTest.e2e.js:29:13 
+ App is ready
+Aug 2 16:07:53 detox[34244] INFO:  at e2e/firstTest.e2e.js:31:13 
+ Check Introduction
+Aug 2 16:07:53 detox[34244] TRACE: [WS_SEND] {"type":"invoke","params":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxAssertion"},"method":"assertMatcher","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"androidx.test.espresso.Espresso"},"method":"onView","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["Introduction"]}}]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForSufficientlyVisible","args":[{"type":"Integer","value":75}]}}]},"messageId":1}
+Aug 2 16:07:53 detox[34244] TRACE: [WSS_GET_FROM, #app] {"messageId":-1000,"type":"ready","params":{}}
+Aug 2 16:07:53 detox[34244] TRACE: [WSS_SEND_TO, #tester] {"messageId":-1000,"type":"ready","params":{}}
+Aug 2 16:07:53 detox[34244] TRACE: [WSS_GET_FROM, #tester] {"type":"invoke","params":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxAssertion"},"method":"assertMatcher","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"androidx.test.espresso.Espresso"},"method":"onView","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["Introduction"]}}]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForSufficientlyVisible","args":[{"type":"Integer","value":75}]}}]},"messageId":1}
+Aug 2 16:07:53 detox[34244] TRACE: [WSS_SEND_TO, #app] {"type":"invoke","params":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxAssertion"},"method":"assertMatcher","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"androidx.test.espresso.Espresso"},"method":"onView","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["Introduction"]}}]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForSufficientlyVisible","args":[{"type":"Integer","value":75}]}}]},"messageId":1}
+Aug 2 16:07:53 detox[34244] TRACE: [WS_MESSAGE] {"messageId":-1000,"type":"ready","params":{}}
+ 
+Aug 2 16:07:53 detox[34244] TRACE: [WSS_GET_FROM, #app] {"messageId":1,"type":"invokeResult","params":{"result":null}}
+Aug 2 16:07:53 detox[34244] TRACE: [WSS_SEND_TO, #tester] {"messageId":1,"type":"invokeResult","params":{"result":null}}
+Aug 2 16:07:53 detox[34244] TRACE: [WS_MESSAGE] {"messageId":1,"type":"invokeResult","params":{"result":null}}
+ 
+Aug 2 16:07:53 detox[34244] TRACE: [WS_SEND] {"type":"invoke","params":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxAssertion"},"method":"assertMatcher","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"androidx.test.espresso.Espresso"},"method":"onView","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["Introduction"]}}]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForText","args":["Open up App.js to start working on your app!"]}}]},"messageId":2}
+Aug 2 16:07:53 detox[34244] TRACE: [WSS_GET_FROM, #tester] {"type":"invoke","params":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxAssertion"},"method":"assertMatcher","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"androidx.test.espresso.Espresso"},"method":"onView","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["Introduction"]}}]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForText","args":["Open up App.js to start working on your app!"]}}]},"messageId":2}
+Aug 2 16:07:53 detox[34244] TRACE: [WSS_SEND_TO, #app] {"type":"invoke","params":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxAssertion"},"method":"assertMatcher","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"androidx.test.espresso.Espresso"},"method":"onView","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["Introduction"]}}]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForText","args":["Open up App.js to start working on your app!"]}}]},"messageId":2}
+Aug 2 16:07:53 detox[34244] TRACE: [WSS_GET_FROM, #app] {"messageId":2,"type":"invokeResult","params":{"result":null}}
+Aug 2 16:07:53 detox[34244] TRACE: [WSS_SEND_TO, #tester] {"messageId":2,"type":"invokeResult","params":{"result":null}}
+Aug 2 16:07:53 detox[34244] TRACE: [WS_MESSAGE] {"messageId":2,"type":"invokeResult","params":{"result":null}}
+ 
+Aug 2 16:07:53 detox[34244] INFO:  at e2e/firstTest.e2e.js:35:13 
+ Check price
+Aug 2 16:07:53 detox[34244] TRACE: [WS_SEND] {"type":"invoke","params":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxAssertion"},"method":"assertMatcher","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"androidx.test.espresso.Espresso"},"method":"onView","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherWithAncestor","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["MyPrice"]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["AppContainer"]}}]}}]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForSufficientlyVisible","args":[{"type":"Integer","value":75}]}}]},"messageId":3}
+Aug 2 16:07:53 detox[34244] TRACE: [WSS_GET_FROM, #tester] {"type":"invoke","params":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxAssertion"},"method":"assertMatcher","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"androidx.test.espresso.Espresso"},"method":"onView","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherWithAncestor","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["MyPrice"]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["AppContainer"]}}]}}]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForSufficientlyVisible","args":[{"type":"Integer","value":75}]}}]},"messageId":3}
+Aug 2 16:07:53 detox[34244] TRACE: [WSS_SEND_TO, #app] {"type":"invoke","params":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxAssertion"},"method":"assertMatcher","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"androidx.test.espresso.Espresso"},"method":"onView","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherWithAncestor","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["MyPrice"]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["AppContainer"]}}]}}]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForSufficientlyVisible","args":[{"type":"Integer","value":75}]}}]},"messageId":3}
+Aug 2 16:07:53 detox[34244] TRACE: [WSS_GET_FROM, #app] {"messageId":3,"type":"invokeResult","params":{"result":null}}
+Aug 2 16:07:53 detox[34244] TRACE: [WSS_SEND_TO, #tester] {"messageId":3,"type":"invokeResult","params":{"result":null}}
+Aug 2 16:07:53 detox[34244] TRACE: [WS_MESSAGE] {"messageId":3,"type":"invokeResult","params":{"result":null}}
+ 
+Aug 2 16:07:53 detox[34244] TRACE: [WS_SEND] {"type":"invoke","params":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxAssertion"},"method":"assertMatcher","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"androidx.test.espresso.Espresso"},"method":"onView","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherWithAncestor","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["MyPrice"]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["AppContainer"]}}]}}]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForText","args":["5,80 €"]}}]},"messageId":4}
+Aug 2 16:07:53 detox[34244] TRACE: [WSS_GET_FROM, #tester] {"type":"invoke","params":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxAssertion"},"method":"assertMatcher","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"androidx.test.espresso.Espresso"},"method":"onView","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherWithAncestor","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["MyPrice"]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["AppContainer"]}}]}}]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForText","args":["5,80 €"]}}]},"messageId":4}
+Aug 2 16:07:53 detox[34244] TRACE: [WSS_SEND_TO, #app] {"type":"invoke","params":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxAssertion"},"method":"assertMatcher","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"androidx.test.espresso.Espresso"},"method":"onView","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherWithAncestor","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["MyPrice"]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["AppContainer"]}}]}}]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForText","args":["5,80 €"]}}]},"messageId":4}
+Aug 2 16:07:53 detox[34244] TRACE: [WSS_GET_FROM, #app] {"messageId":4,"type":"invokeResult","params":{"result":null}}
+Aug 2 16:07:53 detox[34244] TRACE: [WSS_SEND_TO, #tester] {"messageId":4,"type":"invokeResult","params":{"result":null}}
+Aug 2 16:07:53 detox[34244] TRACE: [WS_MESSAGE] {"messageId":4,"type":"invokeResult","params":{"result":null}}
+ 
+Aug 2 16:07:53 detox[34244] INFO:  at e2e/firstTest.e2e.js:38:13 
+ Wait 2 sec
+Aug 2 16:07:55 detox[34244] INFO:  at e2e/firstTest.e2e.js:40:13 
+ Wait done
+Aug 2 16:07:55 detox[34244] INFO:  at e2e/firstTest.e2e.js:42:13 
+ Check percentage
+Aug 2 16:07:55 detox[34244] TRACE: [WS_SEND] {"type":"invoke","params":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxAssertion"},"method":"assertMatcher","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"androidx.test.espresso.Espresso"},"method":"onView","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherWithAncestor","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["MyPercentage"]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["AppContainer"]}}]}}]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForSufficientlyVisible","args":[{"type":"Integer","value":75}]}}]},"messageId":5}
+Aug 2 16:07:55 detox[34244] TRACE: [WSS_GET_FROM, #tester] {"type":"invoke","params":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxAssertion"},"method":"assertMatcher","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"androidx.test.espresso.Espresso"},"method":"onView","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherWithAncestor","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["MyPercentage"]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["AppContainer"]}}]}}]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForSufficientlyVisible","args":[{"type":"Integer","value":75}]}}]},"messageId":5}
+Aug 2 16:07:55 detox[34244] TRACE: [WSS_SEND_TO, #app] {"type":"invoke","params":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxAssertion"},"method":"assertMatcher","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"androidx.test.espresso.Espresso"},"method":"onView","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherWithAncestor","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["MyPercentage"]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["AppContainer"]}}]}}]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForSufficientlyVisible","args":[{"type":"Integer","value":75}]}}]},"messageId":5}
+Aug 2 16:07:55 detox[34244] TRACE: [WSS_GET_FROM, #app] {"messageId":5,"type":"invokeResult","params":{"result":null}}
+Aug 2 16:07:55 detox[34244] TRACE: [WSS_SEND_TO, #tester] {"messageId":5,"type":"invokeResult","params":{"result":null}}
+Aug 2 16:07:55 detox[34244] TRACE: [WS_MESSAGE] {"messageId":5,"type":"invokeResult","params":{"result":null}}
+ 
+Aug 2 16:07:55 detox[34244] TRACE: [WS_SEND] {"type":"invoke","params":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxAssertion"},"method":"assertMatcher","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"androidx.test.espresso.Espresso"},"method":"onView","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherWithAncestor","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["MyPercentage"]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["AppContainer"]}}]}}]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForText","args":["-30%"]}}]},"messageId":6}
+Aug 2 16:07:55 detox[34244] TRACE: [WSS_GET_FROM, #tester] {"type":"invoke","params":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxAssertion"},"method":"assertMatcher","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"androidx.test.espresso.Espresso"},"method":"onView","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherWithAncestor","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["MyPercentage"]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["AppContainer"]}}]}}]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForText","args":["-30%"]}}]},"messageId":6}
+Aug 2 16:07:55 detox[34244] TRACE: [WSS_SEND_TO, #app] {"type":"invoke","params":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxAssertion"},"method":"assertMatcher","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"androidx.test.espresso.Espresso"},"method":"onView","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherWithAncestor","args":[{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["MyPercentage"]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForTestId","args":["AppContainer"]}}]}}]}},{"type":"Invocation","value":{"target":{"type":"Class","value":"com.wix.detox.espresso.DetoxMatcher"},"method":"matcherForText","args":["-30%"]}}]},"messageId":6}
+Aug 2 16:07:55 detox[34244] TRACE: [WSS_GET_FROM, #app] {"messageId":6,"type":"invokeResult","params":{"result":null}}
+Aug 2 16:07:55 detox[34244] TRACE: [WSS_SEND_TO, #tester] {"messageId":6,"type":"invokeResult","params":{"result":null}}
+Aug 2 16:07:55 detox[34244] TRACE: [WS_MESSAGE] {"messageId":6,"type":"invokeResult","params":{"result":null}}
+ 
+Aug 2 16:07:55 detox[34244] INFO:  at e2e/firstTest.e2e.js:45:13 
+ Test Done
+Aug 2 16:07:55 detox[34244] TRACE: [DETOX_AFTER_EACH] passed test: "Example should have welcome screen"
+Aug 2 16:07:55 detox[34244] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onTestDone({
+  title: 'should have welcome screen',
+  fullName: 'Example should have welcome screen',
+  status: 'passed',
+  invocations: 1,
+  timedOut: false
+})
+Aug 2 16:07:55 detox[34244] TRACE: [ARTIFACT_STOP] stopping AndroidInstrumentsRecording
+Aug 2 16:07:55 detox[34244] TRACE: [ARTIFACT_STOP] stopping ADBLogcatRecording
+Aug 2 16:07:55 detox[34244] TRACE: [ARTIFACT_STOP] stopping ADBVideoRecording
+Aug 2 16:07:55 detox[34244] TRACE: [WS_SEND] {"type":"setRecordingState","params":{},"messageId":7}
+Aug 2 16:07:55 detox[34244] DEBUG: [EXEC_CMD, #39] "/Users/bugrauysal/Library/Android/sdk/platform-tools/adb" -s emulator-16610 shell "date +\"%m-%d %T.000\""
+Aug 2 16:07:55 detox[34530] TRACE: [SPAWN_KILL] sending SIGINT to: /Users/bugrauysal/Library/Android/sdk/platform-tools/adb -s emulator-16610 shell screenrecord /sdcard/16556601_2.mp4
+Aug 2 16:07:55 detox[34244] TRACE: [WSS_GET_FROM, #tester] {"type":"setRecordingState","params":{},"messageId":7}
+Aug 2 16:07:55 detox[34244] TRACE: [WSS_SEND_TO, #app] {"type":"setRecordingState","params":{},"messageId":7}
+Aug 2 16:07:55 detox[34244] DEBUG: [SPAWN_END, #27, cpid=34530] /Users/bugrauysal/Library/Android/sdk/platform-tools/adb -s emulator-16610 shell screenrecord /sdcard/16556601_2.mp4 terminated with SIGINT
+Aug 2 16:07:55 detox[34244] TRACE: [ARTIFACT_DISCARD] discarding ADBVideoRecording
+Aug 2 16:07:55 detox[34244] TRACE: [EXEC_SUCCESS, #39] 08-02 16:07:54.000
+
+Aug 2 16:07:55 detox[34541] TRACE: [SPAWN_KILL] sending SIGINT to: /Users/bugrauysal/Library/Android/sdk/platform-tools/adb -s emulator-16610 shell logcat -T "08-02 16:07:51.000" --pid=5407 -f /sdcard/16556601_1.log
+Aug 2 16:07:55 detox[34244] DEBUG: [SPAWN_END, #37, cpid=34541] /Users/bugrauysal/Library/Android/sdk/platform-tools/adb -s emulator-16610 shell "logcat -T \"08-02 16:07:51.000\" --pid=5407 -f /sdcard/16556601_1.log" terminated with SIGINT
+Aug 2 16:07:55 detox[34244] DEBUG: [EXEC_CMD, #40] "/Users/bugrauysal/Library/Android/sdk/platform-tools/adb" -s emulator-16610 shell du /sdcard/16556601_2.mp4
+Aug 2 16:07:55 detox[34244] TRACE: [EXEC_SUCCESS, #40] 112	/sdcard/16556601_2.mp4
+
+Aug 2 16:07:55 detox[34244] DEBUG: [EXEC_CMD, #41] "/Users/bugrauysal/Library/Android/sdk/platform-tools/adb" -s emulator-16610 shell "rm  \"/sdcard/16556601_2.mp4\""
+Aug 2 16:07:55 detox[34244] TRACE: [EXEC_SUCCESS, #41] 
+Aug 2 16:07:55 detox[34244] TRACE: [ARTIFACT_SAVE] saving ADBLogcatRecording to: e2e/artifacts/android.2022-08-02 13-05-55Z/✓ Example should have welcome screen/device.log
+Aug 2 16:07:55 detox[34244] DEBUG: [EXEC_CMD, #42] "/Users/bugrauysal/Library/Android/sdk/platform-tools/adb" -s emulator-16610 pull "/sdcard/16556601_1.log" "e2e/artifacts/android.2022-08-02 13-05-55Z/✓ Example should have welcome screen/device.log"
+Aug 2 16:07:55 detox[34244] TRACE: [EXEC_SUCCESS, #42] /sdcard/16556601_1.log: 1 file pulled, 0 skipped. 149.5 MB/s (1980376 bytes in 0.013s)
+
+Aug 2 16:07:55 detox[34244] DEBUG: [EXEC_CMD, #43] "/Users/bugrauysal/Library/Android/sdk/platform-tools/adb" -s emulator-16610 shell "rm  \"/sdcard/16556601_1.log\""
+Aug 2 16:07:55 detox[34244] TRACE: [EXEC_SUCCESS, #43] 
+Aug 2 16:08:05 detox[34244] TRACE: [WS_SEND] {"type":"currentStatus","params":{},"messageId":8}
+Aug 2 16:08:05 detox[34244] TRACE: [WSS_GET_FROM, #tester] {"type":"currentStatus","params":{},"messageId":8}
+Aug 2 16:08:05 detox[34244] TRACE: [WSS_SEND_TO, #app] {"type":"currentStatus","params":{},"messageId":8}
+Aug 2 16:08:05 detox[34244] TRACE: [WSS_GET_FROM, #app] {"messageId":8,"type":"currentStatusResult","params":{"status":{"app_status":"idle"}}}
+Aug 2 16:08:05 detox[34244] TRACE: [WSS_SEND_TO, #tester] {"messageId":8,"type":"currentStatusResult","params":{"status":{"app_status":"idle"}}}
+Aug 2 16:08:05 detox[34244] TRACE: [WS_MESSAGE] {"messageId":8,"type":"currentStatusResult","params":{"status":{"app_status":"idle"}}}
+ 
+Aug 2 16:08:05 detox[34244] INFO:  [APP_STATUS] The app seems to be idle
+Aug 2 16:08:15 detox[34244] TRACE: [WS_SEND] {"type":"currentStatus","params":{},"messageId":9}
+Aug 2 16:08:15 detox[34244] TRACE: [WSS_GET_FROM, #tester] {"type":"currentStatus","params":{},"messageId":9}
+Aug 2 16:08:15 detox[34244] TRACE: [WSS_SEND_TO, #app] {"type":"currentStatus","params":{},"messageId":9}
+Aug 2 16:08:15 detox[34244] TRACE: [WSS_GET_FROM, #app] {"messageId":9,"type":"currentStatusResult","params":{"status":{"app_status":"idle"}}}
+Aug 2 16:08:15 detox[34244] TRACE: [WSS_SEND_TO, #tester] {"messageId":9,"type":"currentStatusResult","params":{"status":{"app_status":"idle"}}}
+Aug 2 16:08:15 detox[34244] TRACE: [WS_MESSAGE] {"messageId":9,"type":"currentStatusResult","params":{"status":{"app_status":"idle"}}}
+ 
+Aug 2 16:08:15 detox[34244] INFO:  [APP_STATUS] The app seems to be idle
+Aug 2 16:08:25 detox[34244] TRACE: [WS_SEND] {"type":"currentStatus","params":{},"messageId":10}
+Aug 2 16:08:25 detox[34244] TRACE: [WSS_GET_FROM, #tester] {"type":"currentStatus","params":{},"messageId":10}
+Aug 2 16:08:25 detox[34244] TRACE: [WSS_SEND_TO, #app] {"type":"currentStatus","params":{},"messageId":10}
+Aug 2 16:08:25 detox[34244] TRACE: [WSS_GET_FROM, #app] {"messageId":10,"type":"currentStatusResult","params":{"status":{"app_status":"idle"}}}
+Aug 2 16:08:25 detox[34244] TRACE: [WSS_SEND_TO, #tester] {"messageId":10,"type":"currentStatusResult","params":{"status":{"app_status":"idle"}}}
+Aug 2 16:08:25 detox[34244] TRACE: [WS_MESSAGE] {"messageId":10,"type":"currentStatusResult","params":{"status":{"app_status":"idle"}}}
+ 
+Aug 2 16:08:25 detox[34244] INFO:  [APP_STATUS] The app seems to be idle
+Aug 2 16:08:35 detox[34244] ERROR: Exceeded timeout of 40000ms while handling jest-circus "test_done" event
+Aug 2 16:08:35 detox[34244] INFO:  [1m[37mExample: [39m[22m[90mshould have welcome screen[39m[90m [[32mOK[90m][39m
+Aug 2 16:08:35 detox[34244] ERROR: Exceeded timeout of 40000ms while handling jest-circus "test_done" event
+Aug 2 16:08:35 Example[34244] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onRunDescribeFinish({ name: 'Example' })
+Aug 2 16:08:35 ROOT_DESCRIBE_BLOCK[34244] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onRunDescribeFinish({ name: 'ROOT_DESCRIBE_BLOCK' })
+Aug 2 16:08:35 detox[34244] TRACE: [ARTIFACTS_LIFECYCLE] artifactsManager.onBeforeCleanup()
+Aug 2 16:08:35 detox[34244] TRACE: [ARTIFACT_START] starting FileArtifact
+Aug 2 16:08:35 detox[34244] TRACE: [ARTIFACT_STOP] stopping FileArtifact
+Aug 2 16:08:35 detox[34244] TRACE: [ARTIFACT_SAVE] saving FileArtifact to: e2e/artifacts/android.2022-08-02 13-05-55Z/detox_pid_34244.json.log { append: true }
+Aug 2 16:08:35 detox[34244] TRACE: [ARTIFACT_START] starting FileArtifact
+Aug 2 16:08:35 detox[34244] TRACE: [ARTIFACT_STOP] stopping FileArtifact
+Aug 2 16:08:35 detox[34244] TRACE: [ARTIFACT_SAVE] saving FileArtifact to: e2e/artifacts/android.2022-08-02 13-05-55Z/detox_pid_34244.log { append: true }
+Aug 2 16:08:35 detox[34244] DEBUG: [MOVE_FILE] moving "/private/var/folders/ct/9fdg4_nj6vs40ytkqqbkw9_w0000gp/T/f9ed4c49-2a07-4e1d-9b41-8262d7566242.detox.log" to e2e/artifacts/android.2022-08-02 13-05-55Z/detox_pid_34244.json.log
+Aug 2 16:08:35 detox[34244] DEBUG: [MOVE_FILE] moving "/private/var/folders/ct/9fdg4_nj6vs40ytkqqbkw9_w0000gp/T/0593bbc1-9007-4986-ae55-9fc2b4fd700a.detox.log" to e2e/artifacts/android.2022-08-02 13-05-55Z/detox_pid_34244.log
+Aug 2 16:08:35 detox[34244] WARN:  [PENDING_REQUESTS] The app has not responded to the network requests below:
+  (id = 7) setRecordingState: {}
+
+Unresponded network requests might result in timeout errors in Detox tests.
+
+Aug 2 16:08:35 detox[34244] TRACE: [WS_SEND] {"type":"cleanup","params":{"stopRunner":true},"messageId":-49642}
+Aug 2 16:08:35 detox[34244] TRACE: [WSS_GET_FROM, #tester] {"type":"cleanup","params":{"stopRunner":true},"messageId":-49642}
+Aug 2 16:08:35 detox[34244] TRACE: [WSS_SEND_TO, #app] {"type":"cleanup","params":{"stopRunner":true},"messageId":-49642}
+Aug 2 16:08:35 detox[34244] TRACE: [WSS_GET_FROM, #app] {"messageId":-49642,"type":"cleanupDone","params":{}}
+Aug 2 16:08:35 detox[34244] TRACE: [WSS_SEND_TO, #tester] {"messageId":-49642,"type":"cleanupDone","params":{}}
+Aug 2 16:08:35 detox[34244] TRACE: [WS_MESSAGE] {"messageId":-49642,"type":"cleanupDone","params":{}}
+ 
+Aug 2 16:08:35 detox[34244] TRACE: [SESSION_TORN] tester exited session fff44881-01de-007b-3392-0a95bb5c4e1d
+Aug 2 16:08:35 detox[34244] TRACE: [WSS_SEND_TO, #app] {"type":"testerDisconnected","messageId":-1}
+Aug 2 16:08:35 detox[34538] TRACE: [SPAWN_KILL] sending SIGINT to: /Users/bugrauysal/Library/Android/sdk/platform-tools/adb -s emulator-16610 shell am instrument -w -r -e detoxServer ws://localhost:55850 -e detoxSessionId fff44881-01de-007b-3392-0a95bb5c4e1d -e detoxInstrumRecPath /sdcard/16556601_0.dtxplain -e debug false com.detoxsimplernapp.test/androidx.test.runner.AndroidJUnitRunner
+Aug 2 16:08:35 detox[34244] DEBUG: [SPAWN_END, #34, cpid=34538] /Users/bugrauysal/Library/Android/sdk/platform-tools/adb -s emulator-16610 shell am instrument -w -r -e detoxServer ws://localhost:55850 -e detoxSessionId fff44881-01de-007b-3392-0a95bb5c4e1d -e detoxInstrumRecPath /sdcard/16556601_0.dtxplain -e debug false com.detoxsimplernapp.test/androidx.test.runner.AndroidJUnitRunner terminated with SIGINT
+Aug 2 16:08:35 detox[34244] DEBUG: [EXEC_CMD, #44] "/Users/bugrauysal/Library/Android/sdk/platform-tools/adb" -s emulator-16610 reverse --remove tcp:55850
+Aug 2 16:08:35 detox[34244] DEBUG: [WSS_CLOSE] Detox server has been closed gracefully
+Aug 2 16:08:35 detox[34244] TRACE: [SESSION_TORN] app exited session fff44881-01de-007b-3392-0a95bb5c4e1d
+Aug 2 16:08:35 detox[34244] TRACE: [EXEC_SUCCESS, #44] 
